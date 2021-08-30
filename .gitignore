@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Grunt Temp build
+/Temp
+/FunFactor/Client/Build/Temp/scss/font-awesome
+/FunFactor/Client/Build/Temp/Styles
+/FunFactor/Client/wwwroot/Fonts
+/FunFactor/Client/wwwroot/lib/bootstrap.js
