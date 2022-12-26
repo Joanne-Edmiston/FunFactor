@@ -1,0 +1,13 @@
+﻿/* 
+    Imports need to come at the top for postcss to work
+    have a look at this article for tips: https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports
+*/
+
+@import "tailwindcss/base";
+@import "base/_base.css";
+
+@import "tailwindcss/components.css";
+@import "components/_components.css";
+
+@import "tailwindcss/utilities.css";
+/* import custom utilities here*/

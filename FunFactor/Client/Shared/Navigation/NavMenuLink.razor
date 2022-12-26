@@ -1,0 +1,25 @@
+﻿@inject NavigationManager _navigationManager;
+
+<NavLinkBase href="@href" class="@_class" OnLinkClickCallback="OnLinkClickCallback">
+    @ChildContent
+</NavLinkBase>
+
+@code {
+    public bool _isActive => false; // _navigationManager.Uri?.ToLower() == href?.ToLower();
+
+    private string _class =>  $"{@class}{(_isActive ? " active" : string.Empty)}" ;
+
+    [Parameter]
+    public string? href { get; set; }
+
+    [Parameter]
+    public string? @class { get; set; }
+
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnLinkClickCallback { get; set; }
+
+}

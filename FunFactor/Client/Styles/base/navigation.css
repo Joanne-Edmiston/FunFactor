@@ -1,0 +1,14 @@
+﻿.nav-item {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium;
+}
+
+.nav-item.nav-item-top {
+    @apply  text-sm ;
+}
+    .nav-item.active {
+        @apply bg-gray-900;
+    }
+
+.nav-item.nav-item-mobile {
+    @apply block text-base;
+}

@@ -1,0 +1,25 @@
+﻿
+/*example - best to use theme to style these */
+
+@layer components {
+    .btn {
+        @apply py-3 px-5 rounded-lg text-base;
+    }
+
+    .btn-sm {
+        @apply py-1.5 px-3 rounded text-sm;
+    }
+
+    .btn-circle {
+        @apply py-3 px-5 rounded-3xl text-base;
+    }
+
+
+    .btn.icon-btn {
+        @apply items-center text-center mr-2;
+    }
+
+        .btn.icon-btn svg {
+            @apply w-5 h-5 inline fill-white mr-2;
+        }
+}

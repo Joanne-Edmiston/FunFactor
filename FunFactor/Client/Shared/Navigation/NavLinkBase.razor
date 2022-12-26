@@ -1,0 +1,23 @@
+﻿
+
+<NavLink @onclick="OnLinkClickCallback" href="@href" class="@(@class)">
+    @ChildContent
+</NavLink>
+
+
+@code {
+
+    [Parameter]
+    public string? href { get; set; }
+
+    [Parameter]
+    public string? @class { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnLinkClickCallback { get; set; }
+
+
+}
