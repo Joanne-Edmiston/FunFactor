@@ -3,11 +3,11 @@
 
 @layer components {
     .btn {
-        @apply py-3 px-5 rounded-lg text-base;
+        @apply py-3 px-5 rounded-lg text-base drop-shadow-lg;
     }
 
     .btn-sm {
-        @apply py-1.5 px-3 rounded text-sm;
+        @apply py-1.5 px-3 rounded text-sm drop-shaddow-m;
     }
 
     .btn-circle {
@@ -22,4 +22,16 @@
         .btn.icon-btn svg {
             @apply w-5 h-5 inline fill-white mr-2;
         }
+
+    .btn.btn-primary {
+        @apply bg-gray-700 hover:bg-gray-600 text-white;
+    }
+
+    .btn.btn-success {
+        @apply bg-green-700 hover:bg-green-600 text-white;
+    }
+
+    .btn.btn-danger {
+        @apply bg-red-700 hover:bg-red-600 text-white;
+    }
 }

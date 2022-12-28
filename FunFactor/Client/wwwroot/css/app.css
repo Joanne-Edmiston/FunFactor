@@ -608,11 +608,72 @@ svg.cascade-fill path {
     fill: inherit !important;
 }
 
-.ball {
+.btn {
+  border-radius: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-size: 1rem;
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.btn.icon-btn {
+  margin-right: 0.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.btn.icon-btn svg {
+  margin-right: 0.5rem;
+  display: inline;
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: #fff;
+}
+
+.btn.btn-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btn.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
+
+.btn.btn-success {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btn.btn-success:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
+
+.btn.btn-danger {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.btn.btn-danger:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.game-piece {
   height: 2.25rem;
   width: 2.25rem;
   border-radius: 9999px;
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
   --tw-gradient-from: #6d28d9;
   --tw-gradient-to: rgb(109 40 217 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
@@ -623,22 +684,22 @@ svg.cascade-fill path {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.ball:hover {
+.game-piece:hover {
   --tw-gradient-from: #8b5cf6;
   --tw-gradient-to: rgb(139 92 246 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   --tw-gradient-to: #c4b5fd;
 }
 
-.ball.selected {
-  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+.game-piece.selected {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
   --tw-gradient-from: #ca8a04;
   --tw-gradient-to: rgb(202 138 4 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
   --tw-gradient-to: #facc15;
 }
 
-.ball.selected:hover {
+.game-piece.selected:hover {
   --tw-gradient-from: #eab308;
   --tw-gradient-to: rgb(234 179 8 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
