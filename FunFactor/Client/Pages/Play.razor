@@ -67,7 +67,7 @@
 
                                     @if (piece != null)
                                     {
-                                        <button class="game-piece col-start-2" @onclick="(()=> PieceClicked(piece))">@piece.Value</button>
+                                        <button class="game-piece@(piece.IsSelected ? " selected" : string.Empty)" @onclick="(()=> PieceClicked(piece))">@piece.Value</button>
                                     }
                                 </div>
                             }
@@ -87,6 +87,8 @@
     private const int MAX_ROWS = 9;
 
     private List<GamePiece> _pieces { get; set; } = new List<GamePiece>();
+    private IEnumerable<GamePiece> _selectedPieces => _pieces.Where(p => p.IsSelected);
+
     private Timer? _timer;
     private Random _random = new Random();
 
@@ -177,6 +179,27 @@
 
     private void PieceClicked(GamePiece selectedPiece)
     {
+        if (!selectedPiece.IsSelected && _selectedPieces.Count() > 2)
+        {
+            _selectedPieces.First().IsSelected = false;
+        }
+
+        selectedPiece.IsSelected = !selectedPiece.IsSelected;
+
+        if (_selectedPieces.Count() > 2)
+        {
+            var selectedValues = _selectedPieces.Select(p => p.Value).OrderBy(v => v).ToList();
+
+            if (selectedValues[0] * selectedValues[1] == selectedValues[2])
+            {
+                foreach (var s in _selectedPieces)
+                {
+                    
+                }
+            }
+        }
+
+
     }
 
     private int GetNextFactor()
@@ -184,7 +207,7 @@
         var maxValue = _maxTable * _maxTable;
         var nextFactor = _random.Next(2, maxValue + 1);
 
-        while(!IsFactor(nextFactor))
+        while (!IsFactor(nextFactor))
         {
             nextFactor = _random.Next(2, maxValue + 1);
         }
@@ -198,7 +221,7 @@
         {
             if (num <= i) return true;
 
-            if (num % i == 0 && num/i <= _maxTable) return true;
+            if (num % i == 0 && num / i <= _maxTable) return true;
         }
 
         return false;
