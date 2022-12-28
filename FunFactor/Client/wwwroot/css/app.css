@@ -706,6 +706,11 @@ svg.cascade-fill path {
   --tw-gradient-to: #fde047;
 }
 
+.game-piece-container {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
 /*example - best to use theme to style these */
 
 /*example - best to use theme to style these */

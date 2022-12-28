@@ -63,7 +63,7 @@
                             {
                                 var piece = _pieces.FirstOrDefault(p => p.Position.Y == r && p.Position.X == c);
 
-                                <div>
+                                <div class="game-piece-container">
 
                                     @if (piece != null)
                                     {
@@ -88,11 +88,13 @@
 
     private List<GamePiece> _pieces { get; set; } = new List<GamePiece>();
     private Timer? _timer;
+    private Random _random = new Random();
+
     private bool _started;
     private bool _paused;
     private bool _gameOver;
     private int _currentRunRedrawCount;
-    private int _moveRedrawCount = 10;
+    private int _moveRedrawCount = 5;
 
     // TODO: remove this - it's just for testing
     private int _tempCounter = 0;
@@ -156,16 +158,16 @@
                 }
             }
 
-            _tempCounter++;
-            var newPiece = new GamePiece { Value = _tempCounter, Position = new Position { X = 1 } };
-
-            if (_pieces.Any(p => p.Position.Matches(newPiece.Position)))
+            if (_pieces.Any(p => p.Position.Y == 0))
             {
                 _gameOver = true;
                 StopGame();
             }
             else
             {
+
+                _tempCounter++;
+                var newPiece = new GamePiece { Value = _tempCounter, Position = new Position { X = _random.Next(1, MAX_COLUMNS + 1) } };
                 _pieces.Add(newPiece);
             }
 

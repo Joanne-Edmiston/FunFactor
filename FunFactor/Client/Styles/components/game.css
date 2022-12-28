@@ -9,4 +9,8 @@
         .game-piece.selected {
             @apply bg-gradient-to-t from-yellow-600 to-yellow-400 hover:from-yellow-500 hover:to-yellow-300;
         }
+
+    .game-piece-container {
+        @apply h-9 w-9;
+    }
 }
