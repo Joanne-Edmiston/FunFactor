@@ -93,11 +93,12 @@
     private bool _started;
     private bool _paused;
     private bool _gameOver;
-    private int _currentRunRedrawCount;
-    private int _moveRedrawCount = 5;
 
-    // TODO: remove this - it's just for testing
-    private int _tempCounter = 0;
+    // TODO: vary these to make the game harder
+    private int _currentRunRedrawCount;
+    private int _moveRedrawCount = 10;
+    private int _maxTable = 12;
+
 
     private async Task OnStartClick()
     {
@@ -165,9 +166,7 @@
             }
             else
             {
-
-                _tempCounter++;
-                var newPiece = new GamePiece { Value = _tempCounter, Position = new Position { X = _random.Next(1, MAX_COLUMNS + 1) } };
+                var newPiece = new GamePiece { Value = GetNextFactor(), Position = new Position { X = _random.Next(1, MAX_COLUMNS + 1) } };
                 _pieces.Add(newPiece);
             }
 
@@ -178,6 +177,32 @@
 
     private void PieceClicked(GamePiece selectedPiece)
     {
+    }
+
+    private int GetNextFactor()
+    {
+        var maxValue = _maxTable * _maxTable;
+        var nextFactor = _random.Next(2, maxValue + 1);
+
+        while(!IsFactor(nextFactor))
+        {
+            nextFactor = _random.Next(2, maxValue + 1);
+        }
+
+        return nextFactor;
+    }
+
+    private bool IsFactor(int num)
+    {
+        for (int i = 2; i <= _maxTable; i++)
+        {
+            if (num <= i) return true;
+
+            if (num % i == 0 && num/i <= _maxTable) return true;
+        }
+
+        return false;
+
     }
 
     public void Dispose()
