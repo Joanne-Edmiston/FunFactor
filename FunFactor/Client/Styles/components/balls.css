@@ -1,0 +1,12 @@
+﻿
+/*example - best to use theme to style these */
+
+@layer components {
+    .ball {
+        @apply rounded-full h-9 w-9 bg-gradient-to-b from-violet-700 to-violet-400 hover:from-violet-500 hover:to-violet-300 text-white drop-shadow-xl;
+    }
+
+        .ball.selected {
+            @apply bg-gradient-to-b from-yellow-600 to-yellow-400  hover:from-yellow-500 hover:to-yellow-300;
+        }
+}

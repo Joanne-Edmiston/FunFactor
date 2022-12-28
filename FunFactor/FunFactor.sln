@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunFactor.Server", "Server\FunFactor.Server.csproj", "{00E29FF8-BD9A-4023-9EC6-6CC6400D89DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunFactor.Server", "Server\FunFactor.Server.csproj", "{00E29FF8-BD9A-4023-9EC6-6CC6400D89DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunFactor.Client", "Client\FunFactor.Client.csproj", "{B33FCCCD-F615-4418-B18B-5A76579724E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunFactor.Client", "Client\FunFactor.Client.csproj", "{B33FCCCD-F615-4418-B18B-5A76579724E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunFactor.Shared", "Shared\FunFactor.Shared.csproj", "{F4CEBEB0-FCD1-4A7B-8A40-4CE4F6E795F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunFactor.Shared", "Shared\FunFactor.Shared.csproj", "{F4CEBEB0-FCD1-4A7B-8A40-4CE4F6E795F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

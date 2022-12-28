@@ -1,0 +1,21 @@
+﻿<PageHeader>
+    @if (HeaderContent != null)
+    {
+        @HeaderContent
+    }
+</PageHeader>
+<PageMain>
+    @if (BodyContent != null)
+    {
+        @BodyContent
+    }
+</PageMain>
+
+
+@code {
+    [Parameter]
+    public RenderFragment? HeaderContent { get; set; }
+
+    [Parameter]
+    public RenderFragment? BodyContent { get; set; }
+}
