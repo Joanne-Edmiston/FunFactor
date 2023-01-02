@@ -84,7 +84,8 @@
 {
     <ContentModal Show="@true" Title="Game Over!">
         <ChildContent>
-            <Alert Type="@AlertType.Info">
+            <div mb-6>
+                @*<Alert Type="@AlertType.Info">*@
                 @if (_score > 0)
                 {
                     <p>Well done, your score this time was <span class="font-bold">@_score</span></p>
@@ -93,7 +94,8 @@
                 {
                     <p>Bad luck, you didn't score anything this time.  Click 'Play Again' to have another go.</p>
                 }
-            </Alert>
+                @*</Alert>*@
+            </div>
         </ChildContent>
         <Buttons>
             <div class="flex flex-row justify-between">
@@ -249,10 +251,7 @@
         if (!selectedPiece.IsSelected && _selectedPieces.Count() > 2)
         {
             //_selectedPieces.First().IsSelected = false;
-            foreach (var piece in _selectedPieces.ToList())
-            {
-                piece.IsSelected = false;
-            }
+            ClearSelectedPieces();
         }
 
         selectedPiece.IsSelected = !selectedPiece.IsSelected;
@@ -270,9 +269,22 @@
 
                 _score += _matchingScoreIncrement;
             }
+
+            else
+            {
+                ClearSelectedPieces();
+            }
         }
 
 
+    }
+
+    private void ClearSelectedPieces()
+    {
+        foreach (var piece in _selectedPieces.ToList())
+        {
+            piece.IsSelected = false;
+        }
     }
 
     private int GetNextFactor()
@@ -287,7 +299,7 @@
         return nextFactor;
     }
 
-   
+
 
     private void OnGameOverModalClose(bool startNewGame)
     {

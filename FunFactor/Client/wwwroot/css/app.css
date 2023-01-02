@@ -852,6 +852,10 @@ svg.cascade-fill path {
   margin-bottom: 1.25rem !important;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+
 .ml-10 {
   margin-left: 2.5rem !important;
 }
