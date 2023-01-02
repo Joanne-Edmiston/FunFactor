@@ -85,8 +85,14 @@
     <ContentModal Show="@true" Title="Game Over!">
         <ChildContent>
             <Alert Type="@AlertType.Info">
-                <p>Well done, your score this time was <span class="font-bold">9999</span></p>
-
+                @if (_score > 0)
+                {
+                    <p>Well done, your score this time was <span class="font-bold">@_score</span></p>
+                }
+                else
+                {
+                    <p>Bad luck, you didn't score anything this time.  Click 'Play Again' to have another go.</p>
+                }
             </Alert>
         </ChildContent>
         <Buttons>
@@ -121,7 +127,8 @@
     // TODO: vary these to make the game harder
     private int _currentRunRedrawCount;
     private int _moveRedrawCount = 10;
-    private int _maxTable = 12;
+    private int _maxTable = 10;
+    private int _matchingScoreIncrement = 10;
 
 
     private void StartNewGame()
@@ -211,7 +218,7 @@
 
     private bool ContainerIsFull()
     {
-        @for(int c = 1; c <= MAX_COLUMNS; c++)
+        @for (int c = 1; c <= MAX_COLUMNS; c++)
         {
             if (ColumnIsFull(c))
                 return true;
@@ -223,7 +230,7 @@
     private bool ColumnIsFull(int column)
     {
 
-        for(int r = 1; r <= MAX_ROWS; r++)
+        for (int r = 1; r <= MAX_ROWS; r++)
         {
             var currentPosition = new Position { X = column, Y = r };
             if (!_pieces.Any(p => p.Position.Matches(currentPosition)))
@@ -237,9 +244,15 @@
 
     private void PieceClicked(GamePiece selectedPiece)
     {
+        if (_gameOver) return;
+
         if (!selectedPiece.IsSelected && _selectedPieces.Count() > 2)
         {
-            _selectedPieces.First().IsSelected = false;
+            //_selectedPieces.First().IsSelected = false;
+            foreach (var piece in _selectedPieces.ToList())
+            {
+                piece.IsSelected = false;
+            }
         }
 
         selectedPiece.IsSelected = !selectedPiece.IsSelected;
@@ -250,10 +263,12 @@
 
             if (selectedValues[0] * selectedValues[1] == selectedValues[2])
             {
-                foreach (var s in _selectedPieces)
+                foreach (var piece in _selectedPieces.ToList())
                 {
-
+                    _pieces.Remove(piece);
                 }
+
+                _score += _matchingScoreIncrement;
             }
         }
 
@@ -262,29 +277,17 @@
 
     private int GetNextFactor()
     {
-        var maxValue = _maxTable * _maxTable;
-        var nextFactor = _random.Next(2, maxValue + 1);
 
-        while (!IsFactor(nextFactor))
+        var nextFactor = _random.Next(2, _maxTable + 1);
+        if (_random.Next(1, 4) % 3 == 0)
         {
-            nextFactor = _random.Next(2, maxValue + 1);
+            nextFactor *= _random.Next(2, _maxTable + 1);
         }
 
         return nextFactor;
     }
 
-    private bool IsFactor(int num)
-    {
-        for (int i = 2; i <= _maxTable; i++)
-        {
-            if (num <= i) return true;
-
-            if (num % i == 0 && num / i <= _maxTable) return true;
-        }
-
-        return false;
-
-    }
+   
 
     private void OnGameOverModalClose(bool startNewGame)
     {
