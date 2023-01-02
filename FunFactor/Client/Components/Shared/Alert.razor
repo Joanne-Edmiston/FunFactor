@@ -1,0 +1,46 @@
+﻿@using FunFactor.Client.Components.Shared.Svg.Icons
+
+
+
+<div class="alert alert-@((Type ?? AlertType.Info).ToString().ToLower())">
+    <div class="flex-none mr-5">
+        @if (Type == AlertType.Primary || Type == AlertType.Success)
+        {
+            <SvgIcon_CheckCircle />
+        }
+        else if (Type == AlertType.Danger)
+        {
+            <SvgIcon_ExclamationCircle />
+        }
+        else if(Type == AlertType.Info)
+        {
+            <SvgIcon_InfoCircle />
+        }
+        else
+        {
+            <SvgIcon_ExclamationCircle />
+        }
+
+    </div>
+
+    @if (ChildContent != null)
+    {
+        <div class="flex-1">
+            @ChildContent
+
+        </div>
+    }
+</div>
+
+@code {
+    private string? _alertCssClass;
+
+
+    [Parameter]
+    public AlertType? Type { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+
+}

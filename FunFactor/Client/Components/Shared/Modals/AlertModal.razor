@@ -1,0 +1,35 @@
+﻿@using FunFactor.Client.Models.Alerts;
+
+<ContentModal Show="@Show" Title="@Title">
+    <ChildContent>
+        <Alert Type="@Type">@ChildContent</Alert>
+    </ChildContent>
+    <Buttons>
+        <div class="flex flex-row justify-center">
+            <button type="button" class="btn btn-primary" @onclick=OnButtonClick>OK</button>
+        </div>
+    </Buttons>
+</ContentModal>
+
+@code {
+
+    [Parameter]
+    public AlertType? Type { get; set; }
+
+    [Parameter]
+    public bool Show { get; set; } = false;
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback OnConfirmCallback { get; set; }
+
+    public async Task OnButtonClick()
+    {
+        await OnConfirmCallback.InvokeAsync();
+    }
+}

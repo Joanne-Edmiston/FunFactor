@@ -711,6 +711,73 @@ svg.cascade-fill path {
   width: 2.25rem;
 }
 
+.alert {
+  margin-bottom: 1.25rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-size: 1rem;
+}
+
+.alert svg {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.alert.alert-primary, .alert.alert-success {
+  --tw-border-opacity: 1;
+  border-color: rgb(22 163 74 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 253 245 / var(--tw-bg-opacity));
+}
+
+.alert.alert-primary svg {
+  fill: #16a34a;
+}
+
+.alert.alert-success svg {
+  fill: #16a34a;
+}
+
+.alert.alert-danger, .alert.alert-danger {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 241 242 / var(--tw-bg-opacity));
+}
+
+.alert.alert-danger svg {
+  fill: #ef4444;
+}
+
+.alert.alert-warning, .alert.alert-warning {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 211 77 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 251 235 / var(--tw-bg-opacity));
+}
+
+.alert.alert-warning svg {
+  fill: #fcd34d;
+}
+
+.alert.alert-info, .alert.alert-info {
+  --tw-border-opacity: 1;
+  border-color: rgb(147 197 253 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.alert.alert-info svg {
+  fill: #93c5fd;
+}
+
 /*example - best to use theme to style these */
 
 /*example - best to use theme to style these */
@@ -727,6 +794,10 @@ svg.cascade-fill path {
   border-width: 0 !important;
 }
 
+.fixed {
+  position: fixed !important;
+}
+
 .absolute {
   position: absolute !important;
 }
@@ -735,8 +806,27 @@ svg.cascade-fill path {
   position: relative !important;
 }
 
+.inset-0 {
+  top: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  left: 0px !important;
+}
+
 .right-0 {
   right: 0px !important;
+}
+
+.top-16 {
+  top: 4rem !important;
+}
+
+.right-4 {
+  right: 1rem !important;
+}
+
+.top-5 {
+  top: 1.25rem !important;
 }
 
 .z-10 {
@@ -752,6 +842,16 @@ svg.cascade-fill path {
   margin-right: auto !important;
 }
 
+.mx-7 {
+  margin-left: 1.75rem !important;
+  margin-right: 1.75rem !important;
+}
+
+.my-5 {
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
 .ml-10 {
   margin-left: 2.5rem !important;
 }
@@ -762,6 +862,10 @@ svg.cascade-fill path {
 
 .mt-3 {
   margin-top: 0.75rem !important;
+}
+
+.mr-5 {
+  margin-right: 1.25rem !important;
 }
 
 .-mr-2 {
@@ -778,6 +882,14 @@ svg.cascade-fill path {
 
 .mt-2 {
   margin-top: 0.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
 }
 
 .block {
@@ -860,6 +972,14 @@ svg.cascade-fill path {
   max-width: 20rem !important;
 }
 
+.flex-none {
+  flex: none !important;
+}
+
+.flex-1 {
+  flex: 1 1 0% !important;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0 !important;
 }
@@ -868,8 +988,20 @@ svg.cascade-fill path {
   transform-origin: top right !important;
 }
 
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.items-end {
+  align-items: flex-end !important;
 }
 
 .items-center {
@@ -904,12 +1036,24 @@ svg.cascade-fill path {
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse)) !important;
 }
 
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
 .rounded-full {
   border-radius: 9999px !important;
 }
 
 .rounded-md {
   border-radius: 0.375rem !important;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem !important;
 }
 
 .rounded-b-xl {
@@ -964,12 +1108,29 @@ svg.cascade-fill path {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
 }
 
+.bg-gray-500 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity)) !important;
+}
+
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75 !important;
+}
+
+.fill-black {
+  fill: #000 !important;
+}
+
 .p-2 {
   padding: 0.5rem !important;
 }
 
 .p-1 {
   padding: 0.25rem !important;
+}
+
+.p-4 {
+  padding: 1rem !important;
 }
 
 .px-4 {
@@ -1014,6 +1175,22 @@ svg.cascade-fill path {
   padding-top: 1rem !important;
 }
 
+.pt-5 {
+  padding-top: 1.25rem !important;
+}
+
+.pb-4 {
+  padding-bottom: 1rem !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
 .text-base {
   font-size: 1rem !important;
 }
@@ -1026,12 +1203,20 @@ svg.cascade-fill path {
   font-size: .875rem !important;
 }
 
-.font-medium {
-  font-weight: 500 !important;
+.text-xl {
+  font-size: 1.25rem !important;
 }
 
 .font-bold {
   font-weight: 700 !important;
+}
+
+.font-medium {
+  font-weight: 500 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
 }
 
 .leading-none {
@@ -1079,6 +1264,12 @@ svg.cascade-fill path {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
 .ring-1 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
@@ -1097,6 +1288,18 @@ svg.cascade-fill path {
 .drop-shadow-xl {
   --tw-drop-shadow: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08)) !important;
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
+}
+
+.transition-opacity {
+  transition-property: opacity !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+.transition-all {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
 }
 
 /* import custom utilities here*/
@@ -1137,6 +1340,14 @@ svg.cascade-fill path {
 
 @media (min-width: 375px) {
 
+  .sm\:items-center {
+    align-items: center !important;
+  }
+
+  .sm\:p-0 {
+    padding: 0px !important;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
@@ -1166,6 +1377,10 @@ svg.cascade-fill path {
   .md\:hidden {
     display: none !important;
   }
+
+  .md\:w-1\/2 {
+    width: 50% !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1173,5 +1388,12 @@ svg.cascade-fill path {
   .lg\:px-8 {
     padding-left: 2rem !important;
     padding-right: 2rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+
+  .xl\:w-1\/3 {
+    width: 33.333333% !important;
   }
 }

@@ -1,6 +1,8 @@
 ﻿@page "/Play"
 @implements IDisposable;
 
+@using FunFactor.Client.Components.Shared
+@using FunFactor.Client.Components.Shared.Modals
 @using FunFactor.Client.Models.Game
 
 <PageTemplate>
@@ -8,22 +10,19 @@
         <div class="flex justify-between">
             <div>Game</div>
             <div>
-                @if (!_gameOver)
+                @if (!_started || _gameOver)
                 {
-                    if (!_started)
+                    <button class="btn btn-success" @onclick="StartNewGame">Start new Game</button>
+                }
+                else if (!_gameOver)
+                {
+                    @if (!_paused)
                     {
-                        <button class="btn btn-success" @onclick="OnStartClick">Start new Game</button>
+                        <button class="btn btn-primary" @onclick="OnPauseClick">Pause Game</button>
                     }
                     else
                     {
-                        @if (!_paused)
-                        {
-                            <button class="btn btn-primary" @onclick="OnPauseClick">Pause Game</button>
-                        }
-                        else
-                        {
-                            <button class="btn btn-success" @onclick="OnResumeClick">Resume Game</button>
-                        }
+                        <button class="btn btn-success" @onclick="OnResumeClick">Resume Game</button>
                     }
                 }
             </div>
@@ -81,6 +80,26 @@
     </BodyContent>
 </PageTemplate>
 
+@if (_showGameOver)
+{
+    <ContentModal Show="@true" Title="Game Over!">
+        <ChildContent>
+            <Alert Type="@AlertType.Info">
+                <p>Well done, your score this time was <span class="font-bold">9999</span></p>
+
+            </Alert>
+        </ChildContent>
+        <Buttons>
+            <div class="flex flex-row justify-between">
+                <button type="button" class="btn btn-primary" @onclick="@(() => OnGameOverModalClose(false))">OK</button>
+                <button type="button" class="btn btn-success" @onclick="@(() => OnGameOverModalClose(true))">Play Again</button>
+            </div>
+
+        </Buttons>
+    </ContentModal>
+}
+
+
 @code {
     private const int REDRAW_INTERVAL = 100;
     private const int MAX_COLUMNS = 7;
@@ -95,6 +114,9 @@
     private bool _started;
     private bool _paused;
     private bool _gameOver;
+    private bool _showGameOver;
+
+    private int _score;
 
     // TODO: vary these to make the game harder
     private int _currentRunRedrawCount;
@@ -102,19 +124,23 @@
     private int _maxTable = 12;
 
 
-    private async Task OnStartClick()
+    private void StartNewGame()
     {
         _started = true;
+        _gameOver = false;
+        _score = 0;
+        _pieces = new List<GamePiece>();
+
         RunGame();
     }
 
-    private async Task OnResumeClick()
+    private void OnResumeClick()
     {
         RunGame();
         _paused = false;
     }
 
-    private async Task OnPauseClick()
+    private void OnPauseClick()
     {
 
         StopGame();
@@ -136,6 +162,13 @@
     {
         _timer?.Dispose();
         _timer = null;
+    }
+
+    private void SetGameOver()
+    {
+        _gameOver = true;
+        _showGameOver = true;
+        StopGame();
     }
 
     private async Task RedrawGameAsync()
@@ -161,10 +194,9 @@
                 }
             }
 
-            if (_pieces.Any(p => p.Position.Y == 0))
+            if (ContainerIsFull())
             {
-                _gameOver = true;
-                StopGame();
+                SetGameOver();
             }
             else
             {
@@ -175,6 +207,32 @@
         }
 
         StateHasChanged();
+    }
+
+    private bool ContainerIsFull()
+    {
+        @for(int c = 1; c <= MAX_COLUMNS; c++)
+        {
+            if (ColumnIsFull(c))
+                return true;
+        }
+
+        return false;
+    }
+
+    private bool ColumnIsFull(int column)
+    {
+
+        for(int r = 1; r <= MAX_ROWS; r++)
+        {
+            var currentPosition = new Position { X = column, Y = r };
+            if (!_pieces.Any(p => p.Position.Matches(currentPosition)))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private void PieceClicked(GamePiece selectedPiece)
@@ -194,7 +252,7 @@
             {
                 foreach (var s in _selectedPieces)
                 {
-                    
+
                 }
             }
         }
@@ -227,6 +285,17 @@
         return false;
 
     }
+
+    private void OnGameOverModalClose(bool startNewGame)
+    {
+        _showGameOver = false;
+
+        if (startNewGame)
+        {
+            StartNewGame();
+        }
+    }
+
 
     public void Dispose()
     {

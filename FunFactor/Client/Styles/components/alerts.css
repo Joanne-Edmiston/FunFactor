@@ -1,0 +1,43 @@
+﻿.alert {
+    @apply w-full flex items-center py-2 px-5 rounded-md text-base border mb-5;
+}
+
+    .alert svg {
+        @apply h-7 w-7;
+    }
+
+    .alert.alert-primary, .alert.alert-success {
+        @apply bg-emerald-50 border-green-600;
+    }
+
+        .alert.alert-primary svg {
+            @apply fill-green-600;
+        }
+
+        .alert.alert-success svg {
+            @apply fill-green-600;
+        }
+
+    .alert.alert-danger, .alert.alert-danger {
+        @apply bg-rose-50 border-red-500;
+    }
+
+        .alert.alert-danger svg {
+            @apply fill-red-500;
+        }
+
+    .alert.alert-warning, .alert.alert-warning {
+        @apply bg-amber-50 border-amber-300;
+    }
+
+        .alert.alert-warning svg {
+            @apply fill-amber-300;
+        }
+
+    .alert.alert-info, .alert.alert-info {
+        @apply bg-sky-100 border-blue-300;
+    }
+
+        .alert.alert-info svg {
+            @apply fill-blue-300;
+        }
